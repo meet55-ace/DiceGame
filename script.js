@@ -1,26 +1,42 @@
-var random1 = Math.random();
-random1 = random1 * 6;
-random1 = Math.floor(random1) + 1;
-console.log(random1);
+document.getElementById("rollButton").addEventListener("click", function () {
+  const leftDice = document.getElementById("leftDice");
+  const rightDice = document.getElementById("rightDice");
+  const heading = document.querySelector("h1");
 
-var random2 = Math.random();
-random2 = random2 * 6;
-random2 = Math.floor(random2) + 1;
-console.log(random2);
+  // Add animation classes
+  leftDice.classList.add("animate");
+  rightDice.classList.add("animate");
+  heading.classList.add("animate");
 
-var leftdice = document.getElementById("leftDice");
-leftdice.setAttribute("src", "images/dice" + random1 + ".png");
+  setTimeout(() => {
+      leftDice.classList.remove("animate");
+      rightDice.classList.remove("animate");
+      heading.classList.remove("animate");
 
-var rightdice = document.getElementById("rightDice");
-rightdice.setAttribute("src", "images/dice" + random2 + ".png");
+      
+      const random1 = Math.floor(Math.random() * 6) + 1;
+      const random2 = Math.floor(Math.random() * 6) + 1;
 
-var heading = document.querySelector("h1");
+      
+      leftDice.setAttribute("src", `images/dice${random1}.png`);
+      rightDice.setAttribute("src", `images/dice${random2}.png`);
 
-if (random1 > random2) {
-  heading.innerHTML = "Player 1 wins! 🎉";
-} else if (random1 < random2) {
-  heading.innerHTML = "Player 2 wins! 🎉";
-}
-else{
-  heading.innerHTML = "It's a Draw! 🤝"
-}
+      // Update heading text
+      if (random1 > random2) {
+          heading.innerHTML = "Player 1 wins! 🎉";
+      } else if (random1 < random2) {
+          heading.innerHTML = "Player 2 wins! 🎉";
+      } else {
+          heading.innerHTML = "It's a Draw! 🤝";
+      }
+  }, 500); 
+});
+
+document.getElementById("rollButton").addEventListener("click", rollDice);
+
+// Add keydown event for Enter key
+document.addEventListener("keydown", function (event) {
+    if (event.key === "Enter") {
+        rollDice();
+    }
+});
