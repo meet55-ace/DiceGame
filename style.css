@@ -41,3 +41,25 @@ footer {
   color: #fff;
   text-align: center;
 }
+@media (max-width: 768px) {
+    h1 {
+      font-size: 4rem; /* Smaller font size for mobile */
+      margin: 20px;
+    }
+  
+    .container {
+      width: 90%; /* Reduce container width for smaller screens */
+    }
+  
+    p {
+      font-size: 1.5rem; /* Adjust paragraph text size */
+    }
+  
+    img {
+      width: 100%; /* Ensure images take full width in mobile view */
+    }
+  
+    footer {
+      font-size: 1rem; /* Adjust footer text size */
+    }
+  }
